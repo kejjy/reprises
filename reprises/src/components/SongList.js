@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PrimaryButton from './shared/PrimaryButton';
 import { songs } from '../data/songs';
+import AlbumButton from './AlbumButton';
 
 function SongList() {
     const [songList, setSongList] = useState({ 
@@ -36,24 +36,14 @@ function SongList() {
 
     return (
         <div>
-            <div className="grid gap-4 grid-cols-5">
-                <div onClick={handleAlbumClick('Act I')}>
-                    <PrimaryButton text="I"/>
-                </div>
-                <div onClick={handleAlbumClick('Act II')}>
-                    <PrimaryButton text="II"/>
-                </div>
-                <div onClick={handleAlbumClick('Act III')}>
-                    <PrimaryButton text="III"/>
-                </div>
-                <div onClick={handleAlbumClick('Act IV')}>
-                    <PrimaryButton text="IV"/>
-                </div>
-                <div onClick={handleAlbumClick('Act V')}>
-                    <PrimaryButton text="V"/>
-                </div>
+            <div className="grid grid-cols-5">
+                <AlbumButton albumTitle="Act I" selectedAlbum={albumTitle} onClickHandler={handleAlbumClick} />
+                <AlbumButton albumTitle="Act II" selectedAlbum={albumTitle} onClickHandler={handleAlbumClick} />
+                <AlbumButton albumTitle="Act III" selectedAlbum={albumTitle} onClickHandler={handleAlbumClick} />
+                <AlbumButton albumTitle="Act IV" selectedAlbum={albumTitle} onClickHandler={handleAlbumClick} />
+                <AlbumButton albumTitle="Act V" selectedAlbum={albumTitle} onClickHandler={handleAlbumClick} />
             </div>
-            <div className="bg-gray-100 p-5 mt-5">
+            <div className="bg-gray-100 p-5">
                 <div className="pb-5">
                     <h4>{albumTitle}</h4>
                 </div>
@@ -62,7 +52,7 @@ function SongList() {
                         const selected = !!songList.selected.find(x => x.id === song.id);
                         return (
                             <div key={song.id} id={song.id} onClick={handleSongClick(selected)}
-                                className={`bg-white border rounded py-3 hover:bg-indigo-200 ${selected ? 'bg-indigo-400' : ''}`}>
+                                className={`bg-white border rounded py-3 hover:bg-indigo-200 cursor-pointer ${selected ? 'bg-indigo-400' : ''}`}>
                                 {song.title}
                             </div>
                         );

@@ -19,7 +19,7 @@ function Admin() {
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">Test</label>
-                                    <input type="text" name="first_name" id="first_name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full  rounded-md"/>
+                                    <input type="text" name="first_name" id="first_name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-md"/>
                                 </div>
                             </div>
                             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
