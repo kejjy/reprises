@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { songs } from '../data/songs';
 import AlbumButton from './AlbumButton';
 
-function SongList() {
+function SongList({selectedSongs, setSelectedSongs}) {
     const [songList, setSongList] = useState({ 
-        list: [],
-        selected: [],    
+        list: []  
     });
     const [albumTitle, setAlbumTitle] = useState('');
 
@@ -19,18 +18,12 @@ function SongList() {
 
     const handleSongClick = (alreadySelected) => (event) => {
         if (alreadySelected) {
-            const selected = songList.selected.filter(song => song.id !== parseInt(event.target.id));
-            setSongList({
-                ...songList,
-                selected
-            })
+            const selected = selectedSongs.filter(song => song.id !== parseInt(event.target.id));
+            setSelectedSongs(selected)
         } else {
             const newSong = songs.find(song => song.id === parseInt(event.target.id));
-            const selected = [...songList.selected, newSong];
-            setSongList({
-                ...songList,
-                selected
-            });
+            const selected = [...selectedSongs, newSong];
+            setSelectedSongs(selected)
         }
     }
 
@@ -49,7 +42,7 @@ function SongList() {
                 </div>
                 <div className="grid gap-x-4 gap-y-1 text-xs">
                     { songList.list.map(song => {
-                        const selected = !!songList.selected.find(x => x.id === song.id);
+                        const selected = !!selectedSongs.find(x => x.id === song.id);
                         return (
                             <div key={song.id} id={song.id} onClick={handleSongClick(selected)}
                                 className={`bg-white border rounded py-3 hover:bg-indigo-200 cursor-pointer ${selected ? 'bg-indigo-400' : ''}`}>
