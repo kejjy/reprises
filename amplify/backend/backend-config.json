@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "reprises577b88a4": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
