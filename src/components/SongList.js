@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { songs } from '../data/songs';
 import AlbumButton from './AlbumButton';
+import classNames from 'classnames';
 
 function SongList({selectedSongs, setSelectedSongs}) {
     const [songList, setSongList] = useState({ 
@@ -42,10 +43,11 @@ function SongList({selectedSongs, setSelectedSongs}) {
                 </div>
                 <div className="grid gap-x-4 gap-y-1 text-xs">
                     { songList.list.map(song => {
-                        const selected = !!selectedSongs.find(x => x.id === song.id);
+                        const isSelected = !!selectedSongs.find(x => x.id === song.id);
+                        const styles = classNames('bg-white border rounded py-3 hover:bg-indigo-200 cursor-pointer', {'bg-indigo-400': isSelected})
                         return (
-                            <div key={song.id} id={song.id} onClick={handleSongClick(selected)}
-                                className={`bg-white border rounded py-3 hover:bg-indigo-200 cursor-pointer ${selected ? 'bg-indigo-400' : ''}`}>
+                            <div key={song.id} id={song.id} onClick={handleSongClick(isSelected)}
+                                className={styles}>
                                 {song.title}
                             </div>
                         );

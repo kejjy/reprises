@@ -1,9 +1,11 @@
 import React from 'react';
 import PrimaryButton from './shared/PrimaryButton';
+import classNames from 'classnames';
 
 function AlbumButton({albumTitle, selectedAlbum, onClickHandler}) {
+    const classes = classNames('py-5', {'bg-gray-100': albumTitle === selectedAlbum});
     return (
-        <div className={albumTitle === selectedAlbum ? 'bg-gray-100 py-5' : 'py-5'} onClick={onClickHandler(albumTitle)}>
+        <div className={classes} onClick={onClickHandler(albumTitle)}>
             <PrimaryButton text={albumTitle}/>
         </div>
     );
